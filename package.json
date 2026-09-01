@@ -1,7 +1,7 @@
 {
 	"name": "portfolio-creator",
 	"private": true,
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"type": "module",
 	"description": "Fill in a form, get a portfolio. Generates settings.json for the Life-Experimentalist portfolio template.",
 	"license": "Apache-2.0",
@@ -11,7 +11,7 @@
 	},
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build && node scripts/generate-seo.js",
+		"build": "vite build && node scripts/generate-seo.js && node scripts/generate-sw.js",
 		"preview": "vite preview",
 		"lint": "eslint ."
 	},

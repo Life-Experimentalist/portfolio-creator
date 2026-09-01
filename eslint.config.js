@@ -4,7 +4,9 @@ import reactHooks from "eslint-plugin-react-hooks"
 import reactRefresh from "eslint-plugin-react-refresh"
 
 export default [
-	{ ignores: ["dist", "node_modules"] },
+	// sw-template.js carries __PLACEHOLDER__ tokens that generate-sw.js fills in
+	// at build time, so it cannot parse as a normal module until then.
+	{ ignores: ["dist", "node_modules", "scripts/sw-template.js"] },
 	{
 		files: ["**/*.{js,jsx}"],
 		languageOptions: {

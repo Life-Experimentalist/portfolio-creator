@@ -42,6 +42,12 @@
 		<meta name="theme-color" content="#07070b" />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/icon-192.png" />
+		<!-- Written by scripts/generate-seo.js: start_url has to carry BASE_PATH.
+		     The href is relative on purpose — Vite rewrites rel="icon" for the
+		     base path but not rel="manifest", and index.html always sits at the
+		     base, so resolving against the document gets it right either way. -->
+		<link rel="manifest" href="manifest.webmanifest" />
 		<link rel="preconnect" href="https://api.github.com" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

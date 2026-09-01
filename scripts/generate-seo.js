@@ -73,6 +73,35 @@ License: ${CREDIT.license}
 `
 )
 
+// The web app manifest is written here rather than kept in public/ because
+// start_url and scope have to carry the base path, and that is only known once
+// the build has been told where the site is being served from.
+const BASE = (process.env.BASE_PATH || "/").replace(/\/?$/, "/")
+
+fs.writeFileSync(
+	path.join(DIST, "manifest.webmanifest"),
+	JSON.stringify(
+		{
+			name: "Portfolio Creator",
+			short_name: "Portfolio",
+			description: "Fill in a form, get a portfolio.",
+			id: "portfolio-creator",
+			start_url: BASE,
+			scope: BASE,
+			display: "standalone",
+			background_color: "#07070b",
+			theme_color: "#07070b",
+			icons: [
+				{ src: "icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+				{ src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+				{ src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+			],
+		},
+		null,
+		"\t"
+	) + "\n"
+)
+
 // Apache 2.0 section 4(d) asks that the NOTICE travel with the work. A
 // deployed copy is a redistribution, so it travels with that too.
 fs.copyFileSync(path.join(__dirname, "..", "NOTICE"), path.join(DIST, "NOTICE.txt"))
@@ -93,5 +122,5 @@ if (missing.length) {
 	process.exit(1)
 }
 
-console.log(`✓ robots.txt, sitemap.xml, humans.txt, NOTICE.txt written for ${SITE}`)
+console.log(`✓ robots.txt, sitemap.xml, humans.txt, manifest.webmanifest, NOTICE.txt written for ${SITE}`)
 console.log("✓ attribution present in dist/index.html")

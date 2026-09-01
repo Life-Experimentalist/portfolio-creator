@@ -14,6 +14,10 @@ It runs entirely in your browser. There is no backend, no account, and no
 database. The only network calls it makes are to `api.github.com`, and only
 when you ask for them.
 
+Which also means it works offline. Open it once and it keeps working with the
+network gone, reloads included — the only thing that needs a connection is
+publishing, at the end.
+
 ![The form, with the questions in the middle and everything still to fix on the right](docs/screenshots/01-start.png)
 
 <details>
@@ -108,7 +112,7 @@ npm run dev
 | Script | What it does |
 |---|---|
 | `npm run dev` | Vite dev server |
-| `npm run build` | Builds to `dist/`, then writes `robots.txt`, `sitemap.xml` and `humans.txt` |
+| `npm run build` | Builds to `dist/`, then writes `robots.txt`, `sitemap.xml`, `humans.txt`, the web app manifest and the service worker |
 | `npm run preview` | Serves the built output |
 | `npm run lint` | ESLint |
 
@@ -129,7 +133,8 @@ src/lib/github.js       api.github.com, client-side only
 src/lib/derive.js       fields worked out rather than asked about twice
 src/components/         generic renderers — nothing knows what a field means
 scripts/derive-starter.js  regenerates the starter from a real settings.json
-scripts/generate-seo.js    post-build crawlable files
+scripts/generate-seo.js    post-build crawlable files and the web app manifest
+scripts/generate-sw.js     post-build service worker, from sw-template.js
 ```
 
 Adding a question to the form is adding an entry to `steps.js`. The renderers
