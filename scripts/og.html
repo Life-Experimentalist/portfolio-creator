@@ -1,0 +1,121 @@
+<!doctype html>
+<!--
+	The source for public/og.png — the 1200x630 card that shows up when someone
+	pastes the link into Slack, Discord, X or a group chat.
+
+	Kept as HTML rather than as a binary nobody can edit: change the words here,
+	screenshot it at exactly 1200x630, and the card is updated. See the
+	"Regenerating the share card" note in README.md.
+-->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap");
+
+			* { margin: 0; padding: 0; box-sizing: border-box; }
+
+			body {
+				width: 1200px;
+				height: 630px;
+				overflow: hidden;
+				background: #07070b;
+				color: #e4e4e7;
+				font-family: Inter, system-ui, sans-serif;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: 0 84px;
+				position: relative;
+			}
+
+			/* two soft lights, so the card is not a flat black rectangle */
+			body::before,
+			body::after {
+				content: "";
+				position: absolute;
+				border-radius: 50%;
+				filter: blur(120px);
+			}
+			body::before {
+				width: 620px; height: 620px;
+				top: -240px; right: -180px;
+				background: rgba(168, 85, 247, 0.30);
+			}
+			body::after {
+				width: 520px; height: 520px;
+				bottom: -260px; left: -160px;
+				background: rgba(236, 72, 153, 0.20);
+			}
+
+			.inner { position: relative; z-index: 1; }
+
+			.eyebrow {
+				font-family: "JetBrains Mono", ui-monospace, monospace;
+				font-size: 21px;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: #a855f7;
+				margin-bottom: 30px;
+			}
+
+			h1 {
+				/* the gradient is clipped to the text, so the box has to end
+				   where the words do or the colour lands in empty space */
+				width: fit-content;
+				font-size: 86px;
+				font-weight: 800;
+				line-height: 1.02;
+				letter-spacing: -0.035em;
+				background: linear-gradient(100deg, #ffffff 30%, #d8b4fe 70%, #f9a8d4);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			p {
+				margin-top: 28px;
+				font-size: 31px;
+				line-height: 1.45;
+				color: #a1a1aa;
+				max-width: 20ch;
+			}
+
+			.rule {
+				margin-top: 44px;
+				width: 132px;
+				height: 5px;
+				border-radius: 3px;
+				background: linear-gradient(90deg, #a855f7, #ec4899);
+			}
+
+			footer {
+				position: absolute;
+				left: 84px;
+				bottom: 52px;
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				font-family: "JetBrains Mono", ui-monospace, monospace;
+				font-size: 19px;
+				color: #52525b;
+				z-index: 1;
+			}
+			footer .sep { color: #27272a; }
+			footer strong { color: #71717a; font-weight: 500; }
+		</style>
+	</head>
+	<body>
+		<div class="inner">
+			<div class="eyebrow">Life-Experimentalist</div>
+			<h1>Portfolio<br />Creator</h1>
+			<p>Fill in a form, get a portfolio.</p>
+			<div class="rule"></div>
+		</div>
+		<footer>
+			<strong>github.com/Life-Experimentalist/portfolio-creator</strong>
+			<span class="sep">/</span>
+			<span>Designed &amp; built by Krishna GSVV</span>
+		</footer>
+	</body>
+</html>

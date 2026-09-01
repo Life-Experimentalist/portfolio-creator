@@ -1,0 +1,514 @@
+{
+	"$schema": "./settings.schema.json",
+	"seo": {
+		"crawling": {
+			"search": true,
+			"aiTraining": true,
+			"aiData": true
+		},
+		"pageDescriptions": {},
+		"openGraph": {
+			"imageWidth": 1200,
+			"imageHeight": 630
+		},
+		"twitter": {},
+		"structuredData": {
+			"enabled": true,
+			"type": "Person",
+			"sameAs": [],
+			"knowsAbout": []
+		}
+	},
+	"github": {
+		"type": "user",
+		"userAgent": "Portfolio"
+	},
+	"home": {
+		"greeting": "Hi There! I'm",
+		"nameGradient": "linear-gradient(to right, #c770f0, #ec4999, #ef4444)",
+		"location": {
+			"show": true,
+			"icon": "📍"
+		},
+		"profileImage": {
+			"type": "github",
+			"customUrl": "",
+			"borderColor": "rgba(168, 85, 247, 0.3)",
+			"shadowColor": "rgba(168, 85, 247, 0.2)",
+			"note": "Set type to 'github' to use GitHub profile image, 'display' to use display.profileImage, or 'custom' to use customUrl. Colors support ANY CSS format: hex (#a855f7), rgb, rgba, hsl, named colors, or Tailwind classes (purple-500)"
+		},
+		"buttons": [],
+		"showScrollIndicator": true,
+		"copyData": {
+			"enabled": true,
+			"format": "markdown",
+			"label": "",
+			"copiedLabel": "Copied All Data",
+			"tooltip": "Copy this portfolio as text an AI can read",
+			"successDurationMs": 2200
+		},
+		"background": {
+			"type": "animated-network",
+			"enabled": true,
+			"particles": {
+				"count": 150,
+				"minParticles": 30,
+				"maxParticles": 400,
+				"size": 1,
+				"color": "#c770f0",
+				"speed": 1.25,
+				"glow": true,
+				"glowSize": 6,
+				"pulseIntensity": 0.3,
+				"pulseSpeed": 0.002,
+				"mouseInfluence": 120,
+				"mouseForce": 4,
+				"returnSpeed": 0.05,
+				"connections": {
+					"enabled": true,
+					"distance": 200,
+					"color": "rgba(147, 51, 234, 0.2)",
+					"width": 1.25,
+					"maxOpacity": 0.5
+				}
+			},
+			"animation": {
+				"speed": 1,
+				"smoothness": 60
+			},
+			"gradient": {
+				"enabled": false,
+				"colors": [
+					"rgba(15, 23, 42, 1)",
+					"rgba(30, 41, 59, 0.8)",
+					"rgba(51, 65, 85, 0.6)"
+				],
+				"direction": "to bottom right"
+			}
+		},
+		"animations": {
+			"typewriterSettings": {
+				"deleteSpeed": 50,
+				"delay": 100,
+				"autoStart": true,
+				"loop": true
+			},
+			"fadeInDuration": 0.6,
+			"staggerDelay": 0.1
+		},
+		"note": "Configure the home page content - greeting, name, typewriter strings, description, profile image settings, buttons, social links, and animations"
+	},
+	"about": {
+		"heading": "About Me",
+		"image": {
+			"type": "github",
+			"customUrl": "",
+			"note": "Set type to 'github' to use GitHub profile image, 'home' to use same as home page, or 'custom' to use customUrl"
+		},
+		"note": "Configure the About page content - heading, subheading, title, paragraphs, image settings, skills section heading, and skills categories with items",
+		"skillsHeading": "Technical Expertise",
+		"skillsLayout": "masonry",
+		"skillsGridColumns": {
+			"mobile": "grid-cols-1",
+			"tablet": "md:grid-cols-2",
+			"desktop": "lg:grid-cols-3"
+		},
+		"skillsNote": "Comprehensive skills showcase covering programming languages, frameworks, AI/ML tools, cloud platforms, and emerging technologies. Each skill includes relevant icons and color coding for better visual representation.",
+		"stats": [],
+		"statsNote": "Updated statistics reflecting real achievements including hackathon winnings, research publications, and technical certifications. Numbers are based on actual portfolio data and accomplishments.",
+		"achievements": {
+			"show": true,
+			"items": []
+		}
+	},
+	"projects": {
+		"accentColor": "#7c3aed",
+		"buttonStyles": {
+			"code": {
+				"background": "linear-gradient(90deg,#334155,#1f2937)",
+				"textColor": "#ffffff"
+			},
+			"live": {
+				"background": "linear-gradient(90deg,#1f2937,#7c3aed)",
+				"textColor": "#ffffff"
+			}
+		},
+		"showSocialImage": true,
+		"socialPreview": {
+			"defaultSource": "github-opengraph",
+			"opengraphVariant": "2",
+			"allowSourceToggle": true,
+			"overrides": {},
+			"note": "opengraphVariant can be 0,1,2,etc and mostly changes cache behavior. If GitHub OpenGraph is rate-limited, card falls back to custom image and users can switch sources when both are available."
+		},
+		"tagStyles": {
+			"topics": {
+				"backgroundOpacity": 0.18,
+				"textColor": "#e9d5ff",
+				"borderOpacity": 0.3
+			},
+			"technologies": {
+				"backgroundColor": "rgba(96, 165, 250, 0.2)",
+				"textColor": "#93c5fd",
+				"borderColor": "rgba(96, 165, 250, 0.35)"
+			}
+		},
+		"useGitHubDescription": true,
+		"ignore": [],
+		"maxProjects": 25,
+		"sortBy": "updated",
+		"sortOrder": "desc",
+		"showForks": false,
+		"showPrivate": false,
+		"fallbackMode": true,
+		"staticProjects": [],
+		"staticProjectsNote": "Configure static projects when mode is set to 'static'. Each project should have: id, name, description, technologies array, category, featured (boolean), showInAbout (boolean), status, startDate, endDate (null for ongoing), githubUrl, liveUrl, demoUrl, documentationUrl, imageUrl, tags array, highlights array, and stats object with stars/forks/watchers/issues",
+		"featuredProjectsConfig": {
+			"EquiLens": {
+				"icon": "SiTensorflow",
+				"gradient": "bg-gradient-to-br from-purple-600/20 to-pink-600/20",
+				"borderColor": "border-purple-500/30",
+				"hoverBorderColor": "hover:border-purple-400/50",
+				"bgColor": "bg-purple-500/20",
+				"hoverBgColor": "group-hover:bg-purple-500/30",
+				"iconColor": "text-purple-400",
+				"textColor": "text-purple-200"
+			},
+			"RanobeGemini": {
+				"icon": "SiGoogle",
+				"gradient": "bg-gradient-to-br from-yellow-600/20 to-orange-600/20",
+				"borderColor": "border-yellow-500/30",
+				"hoverBorderColor": "hover:border-yellow-400/50",
+				"bgColor": "bg-yellow-500/20",
+				"hoverBgColor": "group-hover:bg-yellow-500/30",
+				"iconColor": "text-yellow-400",
+				"textColor": "text-yellow-200"
+			},
+			"ToxicGuard_AI": {
+				"icon": "SiTensorflow",
+				"gradient": "bg-gradient-to-br from-red-600/20 to-rose-600/20",
+				"borderColor": "border-red-500/30",
+				"hoverBorderColor": "hover:border-red-400/50",
+				"bgColor": "bg-red-500/20",
+				"hoverBgColor": "group-hover:bg-red-500/30",
+				"iconColor": "text-red-400",
+				"textColor": "text-red-200"
+			},
+			"Facial-Emotion-Detector": {
+				"icon": "SiOpencv",
+				"gradient": "bg-gradient-to-br from-green-600/20 to-blue-600/20",
+				"borderColor": "border-green-500/30",
+				"hoverBorderColor": "hover:border-green-400/50",
+				"bgColor": "bg-green-500/20",
+				"hoverBgColor": "group-hover:bg-green-500/30",
+				"iconColor": "text-green-400",
+				"textColor": "text-green-200"
+			},
+			"HiveXplore": {
+				"icon": "SiBlockchaindotcom",
+				"gradient": "bg-gradient-to-br from-orange-600/20 to-red-600/20",
+				"borderColor": "border-orange-500/30",
+				"hoverBorderColor": "hover:border-orange-400/50",
+				"bgColor": "bg-orange-500/20",
+				"hoverBgColor": "group-hover:bg-orange-500/30",
+				"iconColor": "text-orange-400",
+				"textColor": "text-orange-200"
+			},
+			"cspell-sync": {
+				"icon": "BiLogoVisualStudio",
+				"gradient": "bg-gradient-to-br from-cyan-600/20 to-blue-600/20",
+				"borderColor": "border-cyan-500/30",
+				"hoverBorderColor": "hover:border-cyan-400/50",
+				"bgColor": "bg-cyan-500/20",
+				"hoverBgColor": "group-hover:bg-cyan-500/30",
+				"iconColor": "text-cyan-400",
+				"textColor": "text-cyan-200"
+			}
+		},
+		"featuredProjectsConfigNote": "Configure visual styling for projects that appear in the About page (projects with showInAbout: true). Each project's name should match a key in featuredProjectsConfig. Use cohesive color schemes that align with your brand. Visit https://react-icons.github.io/ to find appropriate icons.",
+		"officialName": "",
+		"devUsername": "",
+		"profileImage": ""
+	},
+	"resume": {
+		"url": "",
+		"alternativeUrl": "/resume.pdf",
+		"note": "Resume URL - can be a relative path (for local files) or a full URL (for external). If the RESUME_LINK environment variable is set, it will override this value.",
+		"sectionOrder": [
+			"experiences",
+			"education",
+			"skills",
+			"awards",
+			"certifications",
+			"personalProjects",
+			"publications",
+			"languages",
+			"volunteerExperience"
+		],
+		"sectionOrderNote": "Configure the order in which resume sections appear. Available sections: experiences, education, skills, personalProjects, certifications, awards, publications, languages, volunteerExperience",
+		"totalRewards": {
+			"show": true,
+			"currency": "INR",
+			"icon": "TrophyIcon"
+		},
+		"experiences": [],
+		"experiencesNote": "Configure work experience entries - each should have title, company, period, location, and description array",
+		"experiencesHeading": "Work Experience",
+		"experiencesIcon": "BriefcaseIcon",
+		"education": [],
+		"educationNote": "Configure education entries - each should have degree, field, school, period, gpa, and achievements array",
+		"educationHeading": "Education",
+		"educationIcon": "AcademicCapIcon",
+		"skillsNote": "Configure skills with categories and items. Each item should have name, icon, and color. Available icons: same as About page skill icons.",
+		"skillsHeading": "Technical Skills",
+		"skillsIcon": "HiCpuChip",
+		"certifications": [],
+		"certificationsNote": "Configure certifications with machine-readable validity metadata. Recommended fields: name, issuer, issueDate (YYYY-MM-DD), hasExpiry (boolean), expiryDate (YYYY-MM-DD or empty when hasExpiry is false), credentialId, certificateUrl, and verificationUrl.",
+		"certificationsHeading": "Certifications",
+		"certificationsIcon": "ShieldCheckIcon",
+		"awards": [],
+		"awardsNote": "Configure awards and recognitions - each should have name, organization, date, description, and optional rewardAmount. URLs are optional: verificationUrl (to verify the award) and certificateUrl (to view certificate). Links will only show if provided.",
+		"awardsHeading": "Achievements",
+		"awardsIcon": "TrophyIcon",
+		"publications": [],
+		"publicationsNote": "Configure publications - each should have title, type, publisher, date, url (optional), and description",
+		"publicationsHeading": "Publications",
+		"publicationsIcon": "DocumentTextIcon",
+		"languages": [],
+		"languagesNote": "Configure languages - each should have name, proficiency, and level (A1, A2, B1, B2, C1, C2)",
+		"languagesHeading": "Languages",
+		"languagesIcon": "GlobeAltIcon",
+		"volunteerExperience": [],
+		"volunteerExperienceNote": "Configure volunteer experience - each should have role, organization, period, and description array",
+		"volunteerExperienceHeading": "Volunteer Experience",
+		"volunteerExperienceIcon": "HeartIcon",
+		"personalProjects": [],
+		"personalProjectsNote": "Configure personal projects - each should have name, technologies array (with icon and color), period, description, githubUrl (optional), liveUrl (optional), demoUrl (optional), documentationUrl (optional)",
+		"personalProjectsHeading": "Personal Projects",
+		"personalProjectsIcon": "CubeIcon"
+	},
+	"social": {
+		"platforms": [],
+		"contact": {
+			"phone": ""
+		},
+		"note": "Configure all social media platforms here. Set enabled: true and provide URL to activate. Use showInHome, showInFooter, showInContact to control where each platform appears. To add new platforms, add a new object with name, key, icon, url, label, color, hoverColor, and show flags. Available icons: FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaDiscord, FaYoutube, FaTwitch, FaTiktok, FaMedium, FaDev, FaStackOverflow, FaDribbble, FaBehance, FaCodepen, ArrowUpIcon, Bars3Icon, XMarkIcon"
+	},
+	"contact": {
+		"subtitle": "Whether it's a hackathon, a startup idea, or an interesting open-source project — I'm always up for a conversation. Let's build something worth showing off.",
+		"timeZone": "",
+		"timeFormat": "12-hour",
+		"status": {
+			"show": true,
+			"available": true,
+			"lastUpdated": "2025-01-15"
+		},
+		"responseInfo": {
+			"show": true
+		},
+		"currentFocus": {
+			"show": true
+		},
+		"collaborationInterests": [],
+		"quickActions": {
+			"show": true,
+			"actions": []
+		},
+		"copy": {
+			"enabled": true,
+			"showOnContactInfo": true,
+			"showOnQuickActions": true,
+			"showOnPlatforms": true,
+			"successDurationMs": 2200,
+			"tooltipPrefix": "Copy"
+		},
+		"sections": {
+			"platformSorting": {
+				"iconOnlyFirst": true,
+				"enabled": true
+			},
+			"leftColumn": {
+				"title": "",
+				"sections": [
+					{
+						"type": "contactInfo",
+						"show": true,
+						"title": ""
+					},
+					{
+						"type": "quickActions",
+						"show": true,
+						"title": ""
+					},
+					{
+						"type": "section4",
+						"show": true,
+						"title": ""
+					},
+					{
+						"type": "collaboration",
+						"show": true,
+						"title": ""
+					}
+				]
+			},
+			"rightColumn": {
+				"title": "",
+				"sections": [
+					{
+						"type": "currentFocus",
+						"show": true,
+						"title": ""
+					},
+					{
+						"type": "section1",
+						"show": true,
+						"title": ""
+					},
+					{
+						"type": "section2",
+						"show": true,
+						"title": ""
+					},
+					{
+						"type": "section3",
+						"show": true,
+						"title": ""
+					}
+				]
+			}
+		},
+		"faq": [],
+		"calendly": "",
+		"note": "Configure the Contact Page layout, sections, and content. The Contact Page supports a flexible two-column layout with configurable sections. You can rearrange sections, change titles, add/remove sections, and control what content appears where. Available section types: 'contactInfo' (email, phone, location), 'currentFocus' (what you're working on), 'quickActions' (action buttons with icons), 'github' (GitHub profiles), 'social' (social media platforms), 'collaboration' (collaboration interests). Each section can be shown/hidden and have custom titles. The 'github' and 'social' sections automatically pull from the configured platforms and will display in a grid layout. Platforms with descriptions will be displayed horizontally with text, while simple platforms will show as icon-only cards. Social platforms can be filtered to show only on Contact Page by setting showInContact: true and other show flags to false."
+	},
+	"navbar": {
+		"logo": {
+			"type": "text",
+			"showName": true,
+			"showNameOnMobile": false,
+			"gradient": "from-primary-500 to-accent-500",
+			"customImageUrl": "",
+			"imageSize": "w-8 h-8",
+			"borderRadius": "rounded-full",
+			"note": "Set type to 'text' for text logo, 'image' for custom image, 'github' for GitHub profile image, or 'auto' to match home profileImage settings. githubUsername overrides projects.devUsername for navbar only."
+		},
+		"navigation": [
+			{
+				"name": "Home",
+				"path": "/"
+			},
+			{
+				"name": "About",
+				"path": "/about"
+			},
+			{
+				"name": "Projects",
+				"path": "/projects"
+			},
+			{
+				"name": "Resume",
+				"path": "/resume"
+			},
+			{
+				"name": "Stats",
+				"path": "/stats"
+			},
+			{
+				"name": "Contact",
+				"path": "/contact"
+			}
+		],
+		"styling": {
+			"scrolledBg": "bg-transparent backdrop-blur-md border-b border-white/10",
+			"transparentBg": "bg-transparent",
+			"activeColor": "text-primary-400",
+			"inactiveColor": "text-white hover:text-primary-400",
+			"activeTabGradient": "from-primary-500 to-accent-500",
+			"mobileMenuBg": "bg-black/90 backdrop-blur-md"
+		},
+		"animations": {
+			"initialY": -100,
+			"springStiffness": 380,
+			"springDamping": 30
+		},
+		"note": "Configure navbar logo, navigation items, styling, and animations"
+	},
+	"footer": {
+		"copyright": {
+			"showYear": true,
+			"customText": ""
+		},
+		"madeWith": {
+			"show": true,
+			"icon": "FaHeart",
+			"iconColor": "text-red-500"
+		},
+		"socialLinks": {
+			"show": true
+		},
+		"about": {
+			"show": true,
+			"title": ""
+		},
+		"stats": {
+			"show": true,
+			"countProjectsFromData": true,
+			"items": []
+		},
+		"quickLinks": {
+			"show": false
+		},
+		"styling": {
+			"backgroundColor": "bg-gradient-to-b from-gray-900/80 to-black/90 backdrop-blur-sm",
+			"borderColor": "border-purple-500/20",
+			"textColor": "text-gray-400",
+			"copyrightColor": "text-gray-500"
+		},
+		"note": "Enhanced footer with configurable stats, optional quick links (disabled since navbar is always visible), dynamic project counting, and improved layout"
+	},
+	"favicon": {
+		"type": "custom",
+		"customUrl": "",
+		"iconName": "FaReact",
+		"iconColor": "#61DAFB",
+		"backgroundColor": "transparent",
+		"iconSize": 32,
+		"sizes": [
+			"16x16",
+			"32x32",
+			"96x96",
+			"192x192",
+			"512x512"
+		],
+		"appleTouchIcon": true,
+		"note": "Set type to 'github' to use GitHub profile image, 'custom' to use customUrl, 'icon' to use React Icons from react-icons.github.io, or 'default' for default favicon. For 'icon' type, visit https://react-icons.github.io/react-icons and use any icon name (e.g., FaReact, SiJavascript, MdHome). githubUsername overrides projects.devUsername for favicon only. For best tab clarity, prefer local PNG assets like '/favicon-32x32.png'."
+	},
+	"counterAPI": {
+		"enabled": true,
+		"timeout": 10000,
+		"fallbackOnError": true,
+		"trackEvents": {
+			"resumeView": true,
+			"resumeDownload": true,
+			"resumeCopy": true,
+			"contactSubmit": true,
+			"llmQuery": true,
+			"projectsCopy": true
+		},
+		"projectMapping": {
+			"note": "Maps repository names to CounterAPI project names",
+			"autoGenerate": true,
+			"customMappings": {}
+		}
+	},
+	"codeLedger": {
+		"enabled": true,
+		"repoOwner": "",
+		"repoName": "My-DSA-Life",
+		"widget": {
+			"showInAbout": true,
+			"defaultView": "both"
+		}
+	}
+}

@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	color-scheme: dark;
+}
+
+html,
+body,
+#root {
+	min-height: 100%;
+}
+
+body {
+	@apply bg-ink text-slate-200 font-sans antialiased;
+}
+
+/* One accent gradient, used for headings and the active step marker. */
+.grad {
+	@apply bg-gradient-to-r from-accent to-accent2 bg-clip-text text-transparent;
+}
+
+.card {
+	@apply rounded-xl border border-edge bg-panel;
+}
+
+.field {
+	@apply w-full rounded-lg border border-edge bg-ink px-3 py-2 text-sm text-slate-100
+		placeholder:text-slate-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent;
+}
+
+.btn {
+	@apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
+		transition-colors disabled:cursor-not-allowed disabled:opacity-40;
+}
+
+.btn-primary {
+	@apply btn bg-accent text-white hover:bg-accent/85;
+}
+
+.btn-ghost {
+	@apply btn border border-edge text-slate-300 hover:border-accent hover:text-white;
+}
+
+/* The JSON panel is the one place a monospace scrollbar is worth styling. */
+.scroll-thin::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+	@apply rounded bg-edge;
+}

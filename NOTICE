@@ -1,0 +1,44 @@
+Portfolio Creator
+Copyright 2026 Krishna GSVV
+
+This product includes software originally designed and built by
+Krishna GSVV (https://github.com/VKrishna04).
+
+  This repository:     https://github.com/Life-Experimentalist/portfolio-creator
+  Portfolio template:  https://github.com/VKrishna04/VKrishna04.github.io
+  Author's site:       https://vkrishna04.me
+
+Licensed under the Apache License, Version 2.0 (see LICENSE.md).
+
+Per Section 4(d) of the Apache License 2.0, any redistribution of this work
+or derivative works must retain this NOTICE file, including the attribution
+to Krishna GSVV above. You may add your own attribution notices alongside
+it, but you may not remove the original credit.
+
+This project also carries the portfolio template's own schema and a starter
+settings file derived from it, so the template's NOTICE applies to those
+parts as well.
+
+What this NOTICE does not cover:
+
+  Nothing here asks the people who use this form to credit anybody. The
+  portfolios it generates belong to whoever fills the form in, and every
+  piece of identity on the resulting site comes out of their settings.json.
+  The credit above is for the tool, not for the work it helps make.
+
+Where the credit appears in this repository:
+
+  src/data/template.js      what the running app reads it from
+  src/App.jsx               the line at the foot of the sidebar
+  index.html                <meta name="generator">, <meta name="attribution">
+  index.html                JSON-LD, a schema.org SoftwareApplication node
+  scripts/generate-seo.js   what robots.txt and humans.txt are written from
+  NOTICE                    this file, copied into the build and served
+  README.md                 the Credits section
+
+scripts/generate-seo.js fails the build if the generator tag, the attribution
+tag or the author's name has gone missing from dist/index.html. That check is
+not obfuscation and it is not meant to be unbeatable: anyone who owns a fork
+can take all of it out. It is spread across enough files that removing it is
+a deliberate act, visible in the diff, rather than something a refactor does
+by accident.
