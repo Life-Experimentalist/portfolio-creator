@@ -142,6 +142,9 @@ const DEFAULTS = [
 	["navbar.logo.type", "text"],
 	["about.heading", "About Me"],
 	["projects.mode", "github"],
+	// A brand-new portfolio has no .portfolio/project.json anywhere to read a
+	// description out of, so the GitHub one is all there is to show.
+	["projects.useGitHubDescription", true],
 	["contact.timeFormat", "12-hour"],
 	["resume.type", "none"],
 ]

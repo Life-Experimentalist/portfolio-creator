@@ -1,0 +1,61 @@
+{
+	"$schema": "https://vkrishna04.me/schemas/project-manifest.schema.json",
+	"manifestVersion": 2,
+	"tagline": "Fill in a form, get a portfolio.",
+	"summary": "A guided form that writes the one file a portfolio is configured by. It runs entirely in the browser with no backend and no account, validates every answer against the portfolio's own JSON Schema, and can create the repository and turn on Pages at the end.",
+	"status": "maintained",
+	"category": "Web",
+	"icon": "SiReact",
+	"readme": true,
+	"technologies": [
+		"React",
+		"Vite",
+		"Tailwind CSS",
+		"Ajv",
+		"JSON Schema",
+		"GitHub API"
+	],
+	"tags": [
+		"portfolio",
+		"json-schema",
+		"static-site",
+		"offline-first",
+		"no-backend"
+	],
+	"highlights": [
+		"Validates against the same split JSON Schema the portfolio builds from, so a file this form accepts is a file the portfolio will build.",
+		"Works with the network gone, reloads included — a service worker precaches the app, and only publishing needs a connection.",
+		"Three ways out: download the file, paste a scoped token and let it create the repository and enable Pages, or take the file to another host.",
+		"No hardcoded identity anywhere. The blank starter is derived from a real portfolio with the owner stripped, and the derivation fails if one trace survives."
+	],
+	"links": {
+		"repo": "https://github.com/Life-Experimentalist/portfolio-creator",
+		"live": "https://life-experimentalist.github.io/portfolio-creator/",
+		"docs": "https://github.com/Life-Experimentalist/portfolio-creator/blob/main/docs/hosting.md"
+	},
+	"media": {
+		"layout": "carousel",
+		"screenshots": [
+			{
+				"url": "https://raw.githubusercontent.com/Life-Experimentalist/portfolio-creator/main/docs/screenshots/01-start.png",
+				"alt": "The form, with the questions in the middle and the remaining problems on the right",
+				"caption": "The questions in the middle, the schema's opinion of the answers on the right."
+			},
+			{
+				"url": "https://raw.githubusercontent.com/Life-Experimentalist/portfolio-creator/main/docs/screenshots/02-github.png",
+				"alt": "The GitHub section of the form",
+				"caption": "Every question is one key in settings.json."
+			},
+			{
+				"url": "https://raw.githubusercontent.com/Life-Experimentalist/portfolio-creator/main/docs/screenshots/03-seo.png",
+				"alt": "The SEO and AI section of the form",
+				"caption": "Three switches decide who may read the site: search engines, AI training crawlers, and the machine-readable copies."
+			},
+			{
+				"url": "https://raw.githubusercontent.com/Life-Experimentalist/portfolio-creator/main/docs/screenshots/04-publish.png",
+				"alt": "The publish step",
+				"caption": "Download it, let a token do it, or take the file somewhere else entirely."
+			}
+		]
+	}
+}

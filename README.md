@@ -57,6 +57,9 @@ The form is checked against the **same JSON Schema the portfolio itself uses**,
 split across `public/schemas/settings/`. There is no second set of rules to
 drift out of sync: if this page accepts your answers, the portfolio will build.
 
+Those files are a copy, so keeping them a *faithful* copy is a command rather
+than a habit — see [syncing the schema](#syncing-the-schema).
+
 ---
 
 ## What you get
@@ -115,6 +118,8 @@ npm run dev
 | `npm run build` | Builds to `dist/`, then writes `robots.txt`, `sitemap.xml`, `humans.txt`, the web app manifest and the service worker |
 | `npm run preview` | Serves the built output |
 | `npm run lint` | ESLint |
+| `npm run sync:schema` | Copies the portfolio's JSON Schema into `public/` |
+| `npm run derive:starter` | Regenerates `src/data/starter.json` from a real `settings.json` |
 
 Two environment variables matter at build time: `BASE_PATH` (for a project-page
 subpath, e.g. `/portfolio-creator/`) and `SITE_URL` (what the sitemap
@@ -132,6 +137,7 @@ src/lib/settings.js     get/set by dotted path, export formats
 src/lib/github.js       api.github.com, client-side only
 src/lib/derive.js       fields worked out rather than asked about twice
 src/components/         generic renderers — nothing knows what a field means
+scripts/sync-schema.js     copies the portfolio's schema into public/
 scripts/derive-starter.js  regenerates the starter from a real settings.json
 scripts/generate-seo.js    post-build crawlable files and the web app manifest
 scripts/generate-sw.js     post-build service worker, from sw-template.js
@@ -141,10 +147,25 @@ Adding a question to the form is adding an entry to `steps.js`. The renderers
 are generic and the schema is the validator, so there is nothing else to
 change.
 
+### Syncing the schema
+
+```bash
+npm run sync:schema            # assumes ../VKrishna04.github.io
+npm run sync:schema -- <path>  # or point it at the checkout
+```
+
+The schema lives in the portfolio; this repository holds a copy so the form can
+validate offline. Copying it across by hand is how three drifts got in — a
+missing `navigation.schema.json`, a technology-name pattern that rejected
+`C++`, and a projects section without `tier`, `order` or `packages`. Each made
+this form disagree with the portfolio about a file the portfolio would happily
+build. Run this whenever the schema upstream moves, then regenerate the starter
+and commit both.
+
 ### Regenerating the starter
 
 ```bash
-node scripts/derive-starter.js ../VKrishna04.github.io/public/settings.json
+npm run derive:starter
 ```
 
 It keeps the structure and every styling default, empties what carries a

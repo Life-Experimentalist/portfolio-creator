@@ -712,6 +712,12 @@ export const STEPS = [
 				type: "url",
 				showIf: ["navbar.logo.type", "image"],
 			},
+			{
+				path: "navigation.sectionAnchors.enabled",
+				label: "Per-section URLs",
+				type: "boolean",
+				help: "Gives each section of the long pages — about, resume, contact — its own address, updated as the reader scrolls, so a section can be linked to directly. Scrolling itself is untouched: this does not snap the wheel to one section per gesture.",
+			},
 			{ path: "footer.copyright.name", label: "Copyright name", type: "text" },
 			{ path: "footer.copyright.showYear", label: "Show the year", type: "boolean" },
 			{ path: "footer.about.show", label: "Footer about block", type: "boolean" },
