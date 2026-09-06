@@ -18,7 +18,9 @@ import { completion, download, get, set, toSettingsJson } from "./lib/settings.j
 import { applyDerived } from "./lib/derive.js"
 import Field from "./components/Field.jsx"
 import ImportPanel from "./components/ImportPanel.jsx"
+import Landing from "./components/Landing.jsx"
 import PublishPanel from "./components/PublishPanel.jsx"
+import ThemeToggle from "./components/ThemeToggle.jsx"
 
 const STORAGE_KEY = "portfolio-creator:draft"
 
@@ -32,6 +34,10 @@ const loadDraft = () => {
 	}
 }
 
+/** "#/create" is the builder; anything else is the landing page. */
+const routeFromHash = () =>
+	window.location.hash.startsWith("#/create") ? "create" : "home"
+
 const TABS = [
 	{ id: "start", label: "Start" },
 	...STEPS.map((step) => ({ id: step.id, label: step.title })),
@@ -40,9 +46,16 @@ const TABS = [
 
 export default function App() {
 	const [settings, setSettings] = useState(loadDraft)
+	const [route, setRoute] = useState(routeFromHash)
 	const [tab, setTab] = useState("start")
 	const [notice, setNotice] = useState("")
 	const [showJson, setShowJson] = useState(false)
+
+	useEffect(() => {
+		const onHash = () => setRoute(routeFromHash())
+		window.addEventListener("hashchange", onHash)
+		return () => window.removeEventListener("hashchange", onHash)
+	}, [])
 
 	useEffect(() => {
 		try {
@@ -73,12 +86,20 @@ export default function App() {
 		setNotice("")
 	}
 
+	if (route === "home") {
+		// Any answer at all counts as a draft worth coming back to.
+		const hasDraft = JSON.stringify(settings) !== JSON.stringify(starter)
+		return <Landing hasDraft={hasDraft} />
+	}
+
 	return (
-		<div className="min-h-screen bg-ink text-zinc-200">
+		<div className="min-h-screen bg-ink text-tx2">
 			<header className="sticky top-0 z-20 border-b border-edge bg-ink/90 backdrop-blur">
-				<div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 px-5 py-3">
+				<div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3 sm:gap-4 sm:px-5">
 					<h1 className="text-lg font-bold">
-						<span className="grad">Portfolio Creator</span>
+						<a className="grad" href="#/" title="Back to the front page">
+							Portfolio Creator
+						</a>
 					</h1>
 					<div className="flex flex-1 items-center gap-3">
 						<div className="h-1.5 flex-1 overflow-hidden rounded-full bg-panel">
@@ -87,19 +108,20 @@ export default function App() {
 								style={{ width: `${percent}%` }}
 							/>
 						</div>
-						<span className="w-10 text-right text-xs tabular-nums text-zinc-500">
+						<span className="w-10 text-right text-xs tabular-nums text-tx4">
 							{percent}%
 						</span>
 					</div>
 					<span
 						className={
 							valid
-								? "rounded-full bg-emerald-500/15 px-3 py-1 text-xs text-emerald-400"
+								? "rounded-full bg-ok/15 px-3 py-1 text-xs text-ok"
 								: "rounded-full bg-accent2/15 px-3 py-1 text-xs text-accent2"
 						}
 					>
 						{valid ? "valid" : `${errors.length} to fix`}
 					</span>
+					<ThemeToggle />
 					<button
 						className="btn btn-primary text-sm"
 						onClick={() => download("settings.json", toSettingsJson(exported))}
@@ -109,7 +131,7 @@ export default function App() {
 				</div>
 			</header>
 
-			<div className="mx-auto grid max-w-7xl gap-6 px-5 py-6 lg:grid-cols-[13rem_1fr_20rem]">
+			<div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)] gap-6 px-4 py-6 sm:px-5 lg:grid-cols-[13rem_minmax(0,1fr)_20rem]">
 				{/* --- steps --- */}
 				<nav className="scroll-thin lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
 					<ul className="flex gap-1 overflow-x-auto pb-2 lg:block lg:space-y-0.5 lg:overflow-visible lg:pb-0">
@@ -121,7 +143,7 @@ export default function App() {
 										className={`flex w-full shrink-0 items-center justify-between gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-left text-sm transition ${
 											tab === id
 												? "bg-accent/15 text-accent"
-												: "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+												: "text-tx3 hover:bg-hov/5 hover:text-tx2"
 										}`}
 										onClick={() => setTab(id)}
 									>
@@ -137,7 +159,7 @@ export default function App() {
 						})}
 					</ul>
 					<button
-						className="btn btn-ghost mt-3 hidden w-full text-xs text-zinc-500 lg:block"
+						className="btn btn-ghost mt-3 hidden w-full text-xs text-tx4 lg:inline-flex"
 						onClick={reset}
 					>
 						Start over
@@ -155,10 +177,10 @@ export default function App() {
 					{tab === "start" && (
 						<>
 							<section className="card space-y-3 p-6">
-								<h2 className="text-xl font-semibold text-zinc-100">
+								<h2 className="text-xl font-semibold text-tx">
 									Answer some questions, get a portfolio.
 								</h2>
-								<p className="text-sm leading-relaxed text-zinc-400">
+								<p className="text-sm leading-relaxed text-tx3">
 									This form writes one file - <code>settings.json</code> - and that file
 									is the entire portfolio. Your projects come from your GitHub account
 									automatically, so the site keeps up with your work without you
@@ -166,13 +188,13 @@ export default function App() {
 									Schema the portfolio itself uses, which means anything this page
 									accepts will build.
 								</p>
-								<p className="text-sm leading-relaxed text-zinc-400">
+								<p className="text-sm leading-relaxed text-tx3">
 									It also publishes machine-readable copies of everything -{" "}
 									<code>llms.txt</code>, <code>/api/portfolio.json</code>,{" "}
 									<code>humans.txt</code> - so handing someone your URL and asking an AI
 									to write your resume from it actually works.
 								</p>
-								<p className="text-sm leading-relaxed text-zinc-500">
+								<p className="text-sm leading-relaxed text-tx4">
 									Nothing leaves your browser unless you ask it to. Your draft is saved
 									here, on this device.
 								</p>
@@ -188,8 +210,8 @@ export default function App() {
 					{step && (
 						<section className="card space-y-5 p-6">
 							<div className="space-y-1.5">
-								<h2 className="text-lg font-semibold text-zinc-100">{step.title}</h2>
-								<p className="text-sm leading-relaxed text-zinc-400">{step.blurb}</p>
+								<h2 className="text-lg font-semibold text-tx">{step.title}</h2>
+								<p className="text-sm leading-relaxed text-tx3">{step.blurb}</p>
 							</div>
 							<div className="space-y-5">
 								{step.fields.map((field) => (
@@ -206,7 +228,7 @@ export default function App() {
 
 					{step?.id === "look" && (
 						<section className="card space-y-4 p-6">
-							<h3 className="font-semibold text-zinc-100">Sister projects</h3>
+							<h3 className="font-semibold text-tx">Sister projects</h3>
 							{INTEGRATIONS.map((integration) => (
 								<div key={integration.name} className="space-y-1">
 									<a
@@ -217,10 +239,10 @@ export default function App() {
 									>
 										{integration.name}
 									</a>
-									<span className="ml-2 text-xs text-zinc-600">
+									<span className="ml-2 text-xs text-tx5">
 										{get(settings, integration.enabledPath) ? "on" : "off"}
 									</span>
-									<p className="text-sm leading-relaxed text-zinc-400">
+									<p className="text-sm leading-relaxed text-tx3">
 										{integration.blurb}
 									</p>
 								</div>
@@ -260,11 +282,11 @@ export default function App() {
 				<aside className="scroll-thin space-y-4 lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
 					<div className="card p-4">
 						<div className="mb-2 flex items-center justify-between">
-							<h3 className="text-sm font-semibold text-zinc-200">
+							<h3 className="text-sm font-semibold text-tx2">
 								{valid ? "Ready to build" : `${errors.length} things to fix`}
 							</h3>
 							<button
-								className="text-xs text-zinc-500 hover:text-accent"
+								className="text-xs text-tx4 hover:text-accent"
 								onClick={() => setShowJson((on) => !on)}
 							>
 								{showJson ? "hide json" : "show json"}
@@ -272,7 +294,7 @@ export default function App() {
 						</div>
 
 						{valid ? (
-							<p className="text-xs leading-relaxed text-zinc-500">
+							<p className="text-xs leading-relaxed text-tx4">
 								Everything matches the schema. Download the file, or publish it from the
 								last step.
 							</p>
@@ -284,13 +306,13 @@ export default function App() {
 											className="text-left hover:text-accent"
 											onClick={() => setTab(error.section)}
 										>
-											<code className="text-zinc-500">{error.path}</code>{" "}
+											<code className="text-tx4">{error.path}</code>{" "}
 											<span className="text-accent2">{error.message}</span>
 										</button>
 									</li>
 								))}
 								{errors.length > 40 && (
-									<li className="text-xs text-zinc-600">
+									<li className="text-xs text-tx5">
 										...and {errors.length - 40} more
 									</li>
 								)}
@@ -299,12 +321,12 @@ export default function App() {
 					</div>
 
 					{showJson && (
-						<pre className="card scroll-thin max-h-96 overflow-auto p-3 text-[11px] leading-relaxed text-zinc-400">
+						<pre className="card scroll-thin max-h-96 overflow-auto p-3 text-[11px] leading-relaxed text-tx3">
 							{toSettingsJson(exported)}
 						</pre>
 					)}
 
-					<div className="card space-y-2 p-4 text-xs leading-relaxed text-zinc-500">
+					<div className="card space-y-2 p-4 text-xs leading-relaxed text-tx4">
 						<p>
 							Built on the{" "}
 							<a
@@ -340,7 +362,7 @@ export default function App() {
 						</p>
 					</div>
 
-					<button className="btn btn-ghost w-full text-xs text-zinc-500 lg:hidden" onClick={reset}>
+					<button className="btn btn-ghost w-full text-xs text-tx4 lg:hidden" onClick={reset}>
 						Start over
 					</button>
 				</aside>

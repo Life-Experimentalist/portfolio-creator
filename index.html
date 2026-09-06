@@ -38,8 +38,29 @@
 
 		<meta name="generator" content="https://github.com/Life-Experimentalist/portfolio-creator" />
 		<meta name="attribution" content="Designed &amp; built by Krishna GSVV" />
-		<meta name="color-scheme" content="dark" />
+		<meta name="color-scheme" content="dark light" />
 		<meta name="theme-color" content="#07070b" />
+
+		<!-- Theme before first paint. Mirrors src/lib/theme.js - change both. -->
+		<script>
+			;(function () {
+				var theme
+				try {
+					theme = localStorage.getItem("portfolio-creator:theme")
+				} catch (e) {
+					/* private window */
+				}
+				if (theme !== "light" && theme !== "dark")
+					theme = matchMedia("(prefers-color-scheme: light)").matches
+						? "light"
+						: "dark"
+				document.documentElement.dataset.theme = theme
+				if (theme === "light")
+					document
+						.querySelector('meta[name="theme-color"]')
+						.setAttribute("content", "#fafafa")
+			})()
+		</script>
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="apple-touch-icon" href="/icon-192.png" />

@@ -90,8 +90,8 @@ export default function ImportPanel({ settings, onReplace, onNotice }) {
 	return (
 		<div className="space-y-6">
 			<section className="card space-y-3 p-5">
-				<h3 className="font-semibold text-zinc-100">Start from a GitHub account</h3>
-				<p className="text-sm leading-relaxed text-zinc-400">
+				<h3 className="font-semibold text-tx">Start from a GitHub account</h3>
+				<p className="text-sm leading-relaxed text-tx3">
 					Reads the public profile and repository list. No sign-in, no token, nothing
 					stored. It fills in the questions a public profile can actually answer and
 					leaves the rest blank.
@@ -113,10 +113,10 @@ export default function ImportPanel({ settings, onReplace, onNotice }) {
 
 			{repos.length > 0 && (
 				<section className="card space-y-3 p-5">
-					<h3 className="font-semibold text-zinc-100">
+					<h3 className="font-semibold text-tx">
 						Which repositories should stay off the site?
 					</h3>
-					<p className="text-sm text-zinc-400">
+					<p className="text-sm text-tx3">
 						{repos.length} public repositories. Ticking one adds it to the ignore list;
 						everything else appears automatically, and so will anything you push later.
 					</p>
@@ -124,7 +124,7 @@ export default function ImportPanel({ settings, onReplace, onNotice }) {
 						{repos.map((repo) => (
 							<label
 								key={repo.id}
-								className="flex cursor-pointer items-start gap-3 rounded-lg px-2 py-1.5 hover:bg-white/5"
+								className="flex cursor-pointer items-start gap-3 rounded-lg px-2 py-1.5 hover:bg-hov/5"
 							>
 								<input
 									type="checkbox"
@@ -133,12 +133,12 @@ export default function ImportPanel({ settings, onReplace, onNotice }) {
 									onChange={() => toggleRepo(repo.name)}
 								/>
 								<span className="min-w-0">
-									<span className="block truncate text-sm text-zinc-200">
+									<span className="block truncate text-sm text-tx2">
 										{repo.name}
-										{repo.fork && <span className="ml-2 text-xs text-zinc-600">fork</span>}
+										{repo.fork && <span className="ml-2 text-xs text-tx5">fork</span>}
 									</span>
 									{repo.description && (
-										<span className="block truncate text-xs text-zinc-500">
+										<span className="block truncate text-xs text-tx4">
 											{repo.description}
 										</span>
 									)}
@@ -150,8 +150,8 @@ export default function ImportPanel({ settings, onReplace, onNotice }) {
 			)}
 
 			<section className="card space-y-3 p-5">
-				<h3 className="font-semibold text-zinc-100">Already have a settings.json?</h3>
-				<p className="text-sm leading-relaxed text-zinc-400">
+				<h3 className="font-semibold text-tx">Already have a settings.json?</h3>
+				<p className="text-sm leading-relaxed text-tx3">
 					Load it and carry on editing. This is also how you come back later: download
 					the file, keep it, and upload it again next time rather than starting over.
 				</p>

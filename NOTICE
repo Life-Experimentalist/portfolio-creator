@@ -30,6 +30,7 @@ Where the credit appears in this repository:
 
   src/data/template.js      what the running app reads it from
   src/App.jsx               the line at the foot of the sidebar
+  src/components/Landing.jsx   the credit in the landing page footer
   index.html                <meta name="generator">, <meta name="attribution">
   index.html                JSON-LD, a schema.org SoftwareApplication node
   scripts/generate-seo.js   what robots.txt and humans.txt are written from

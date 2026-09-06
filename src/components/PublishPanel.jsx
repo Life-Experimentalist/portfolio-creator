@@ -31,13 +31,13 @@ const Step = ({ done, failed, children }) => (
 				failed
 					? "mt-0.5 text-accent2"
 					: done
-						? "mt-0.5 text-emerald-400"
-						: "mt-0.5 text-zinc-600"
+						? "mt-0.5 text-ok"
+						: "mt-0.5 text-tx5"
 			}
 		>
 			{failed ? "×" : done ? "✓" : "•"}
 		</span>
-		<span className={failed ? "text-accent2" : done ? "text-zinc-300" : "text-zinc-500"}>
+		<span className={failed ? "text-accent2" : done ? "text-tx2" : "text-tx4"}>
 			{children}
 		</span>
 	</li>
@@ -147,8 +147,8 @@ export default function PublishPanel({ settings, valid }) {
 			)}
 
 			<section className="card space-y-3 p-5">
-				<h3 className="font-semibold text-zinc-100">1. Download and do it yourself</h3>
-				<p className="text-sm leading-relaxed text-zinc-400">
+				<h3 className="font-semibold text-tx">1. Download and do it yourself</h3>
+				<p className="text-sm leading-relaxed text-tx3">
 					Fork the template, drop this file in at <code>public/settings.json</code>,
 					push. Nothing here ever sees a token, and it works the same on every host.
 				</p>
@@ -178,11 +178,11 @@ export default function PublishPanel({ settings, valid }) {
 
 			<section className="card space-y-4 p-5">
 				<div>
-					<h3 className="font-semibold text-zinc-100">2. Let it publish for you</h3>
-					<p className="mt-1 text-sm leading-relaxed text-zinc-400">
+					<h3 className="font-semibold text-tx">2. Let it publish for you</h3>
+					<p className="mt-1 text-sm leading-relaxed text-tx3">
 						Paste a fine-grained personal access token with{" "}
-						<strong className="text-zinc-300">Administration: read and write</strong> and{" "}
-						<strong className="text-zinc-300">Contents: read and write</strong>. The
+						<strong className="text-tx2">Administration: read and write</strong> and{" "}
+						<strong className="text-tx2">Contents: read and write</strong>. The
 						token stays in this page for as long as the tab is open: it is never
 						stored, never logged, and goes nowhere except api.github.com. Close the
 						tab and it is gone. Revoke it afterwards anyway.
@@ -205,19 +205,19 @@ export default function PublishPanel({ settings, valid }) {
 
 				{user && (
 					<div className="space-y-3 rounded-lg border border-edge bg-black/20 p-4">
-						<p className="text-sm text-zinc-300">
+						<p className="text-sm text-tx2">
 							Signed in as <strong>{user.login}</strong>
 							{user.scopes?.length ? (
-								<span className="text-zinc-500"> - scopes: {user.scopes.join(", ")}</span>
+								<span className="text-tx4"> - scopes: {user.scopes.join(", ")}</span>
 							) : (
-								<span className="text-zinc-500">
+								<span className="text-tx4">
 									{" "}
 									- fine-grained token, permissions are set per repository
 								</span>
 							)}
 						</p>
 						<div className="flex flex-wrap items-center gap-2">
-							<span className="text-sm text-zinc-500">{user.login}/</span>
+							<span className="text-sm text-tx4">{user.login}/</span>
 							<input
 								className="field flex-1 min-w-[12rem]"
 								value={repoName}
@@ -225,7 +225,7 @@ export default function PublishPanel({ settings, valid }) {
 								placeholder={`${user.login}.github.io`}
 							/>
 						</div>
-						<p className="text-xs text-zinc-500">
+						<p className="text-xs text-tx4">
 							Naming it <code>{user.login}.github.io</code> puts the site at the root of
 							your github.io address. Any other name puts it in a subfolder.
 						</p>
@@ -268,8 +268,8 @@ export default function PublishPanel({ settings, valid }) {
 			</section>
 
 			<section className="card space-y-3 p-5">
-				<h3 className="font-semibold text-zinc-100">3. Somewhere other than GitHub Pages</h3>
-				<p className="text-sm leading-relaxed text-zinc-400">
+				<h3 className="font-semibold text-tx">3. Somewhere other than GitHub Pages</h3>
+				<p className="text-sm leading-relaxed text-tx3">
 					The build output is a static folder, so Cloudflare Pages, Cloudflare Workers,
 					Netlify, Vercel and Render all host it happily - each with its own trade-offs
 					around build minutes, custom domains and how quickly things go wrong at 2am.
@@ -287,8 +287,8 @@ export default function PublishPanel({ settings, valid }) {
 			</section>
 
 			<section className="card space-y-3 p-5">
-				<h3 className="font-semibold text-zinc-100">Coming back later</h3>
-				<p className="text-sm leading-relaxed text-zinc-400">
+				<h3 className="font-semibold text-tx">Coming back later</h3>
+				<p className="text-sm leading-relaxed text-tx3">
 					The template keeps improving. Your answers live in one file, so pulling in new
 					pages, new sections and new schema fields is a merge of the upstream template
 					rather than a rewrite of your site - and anything the schema gains shows up in

@@ -28,7 +28,7 @@ const SubField = ({ sub, value, onChange }) => {
 						checked={value === true}
 						onChange={(e) => onChange(e.target.checked)}
 					/>
-					<span className="text-xs text-zinc-300">{sub.label}</span>
+					<span className="text-xs text-tx2">{sub.label}</span>
 				</label>
 			)
 		case "select":
@@ -127,7 +127,7 @@ export default function ListEditor({ field, value, onChange }) {
 	return (
 		<div className="space-y-2">
 			{rows.length === 0 && (
-				<p className="rounded-lg border border-dashed border-edge px-3 py-4 text-center text-xs text-zinc-600">
+				<p className="rounded-lg border border-dashed border-edge px-3 py-4 text-center text-xs text-tx5">
 					Nothing here yet.
 				</p>
 			)}
@@ -137,10 +137,10 @@ export default function ListEditor({ field, value, onChange }) {
 					<div className="flex items-center gap-1 px-3 py-2">
 						<button
 							type="button"
-							className="flex-1 truncate text-left text-sm text-zinc-200 hover:text-white"
+							className="flex-1 truncate text-left text-sm text-tx2 hover:text-tx"
 							onClick={() => setOpen(open === index ? null : index)}
 						>
-							<span className="mr-2 text-zinc-600">{open === index ? "-" : "+"}</span>
+							<span className="mr-2 text-tx5">{open === index ? "-" : "+"}</span>
 							{title(row, index)}
 						</button>
 						<button
@@ -186,7 +186,7 @@ export default function ListEditor({ field, value, onChange }) {
 									}
 								>
 									{sub.type !== "boolean" && (
-										<label className="text-xs text-zinc-400">{sub.label}</label>
+										<label className="text-xs text-tx3">{sub.label}</label>
 									)}
 									<SubField
 										sub={sub}

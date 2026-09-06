@@ -70,16 +70,16 @@ export default function Field({ field, settings, onChange }) {
 
 	const label = (
 		<div className="flex items-baseline justify-between gap-3">
-			<label className="text-sm font-medium text-zinc-200">
+			<label className="text-sm font-medium text-tx2">
 				{field.label}
 				{field.required && <span className="ml-1 text-accent2">*</span>}
 			</label>
-			<code className="shrink-0 text-[11px] text-zinc-600">{field.path}</code>
+			<code className="shrink-0 text-[11px] text-tx5">{field.path}</code>
 		</div>
 	)
 
 	const help = field.help && (
-		<p className="text-xs leading-relaxed text-zinc-500">{field.help}</p>
+		<p className="text-xs leading-relaxed text-tx4">{field.help}</p>
 	)
 
 	if (field.derived) {
@@ -87,12 +87,12 @@ export default function Field({ field, settings, onChange }) {
 			<div className="space-y-1.5">
 				{label}
 				<input
-					className="field cursor-not-allowed bg-black/40 text-zinc-500"
+					className="field cursor-not-allowed bg-black/40 text-tx4"
 					value={previewDerived(settings, field)}
 					readOnly
 					tabIndex={-1}
 				/>
-				<p className="text-xs leading-relaxed text-zinc-500">
+				<p className="text-xs leading-relaxed text-tx4">
 					{field.help || "Worked out from your other answers."}
 				</p>
 			</div>
@@ -111,8 +111,8 @@ export default function Field({ field, settings, onChange }) {
 							checked={value === true}
 							onChange={(e) => setValue(e.target.checked)}
 						/>
-						<span className="text-sm font-medium text-zinc-200">{field.label}</span>
-						<code className="ml-auto text-[11px] text-zinc-600">{field.path}</code>
+						<span className="text-sm font-medium text-tx2">{field.label}</span>
+						<code className="ml-auto text-[11px] text-tx5">{field.path}</code>
 					</label>
 					{help}
 				</div>
