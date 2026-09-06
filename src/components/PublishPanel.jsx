@@ -16,6 +16,7 @@ import { useState } from "react"
 import {
 	createFromTemplate,
 	enablePages,
+	removeInheritedSeo,
 	putFile,
 	tokenScopes,
 	whoami,
@@ -95,6 +96,22 @@ export default function PublishPanel({ settings, valid }) {
 				message: "Configure portfolio",
 			})
 			note("Committed public/settings.json.")
+
+			try {
+				const removed = await removeInheritedSeo(token, {
+					owner,
+					repo: repoName,
+				})
+				if (removed.length)
+					note(
+						`Removed ${removed.length} files the template had pointing at its owner's domain. Your build regenerates them from your settings.`
+					)
+			} catch {
+				note(
+					"Could not remove the template's own robots.txt, sitemap.xml and JSON endpoints. They name the template owner's site, not yours; your first build overwrites them, but delete them by hand if it does not.",
+					true
+				)
+			}
 
 			try {
 				await enablePages(token, { owner, repo: repoName })
